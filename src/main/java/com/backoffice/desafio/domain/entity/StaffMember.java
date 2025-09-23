@@ -2,10 +2,7 @@ package com.backoffice.desafio.domain.entity;
 
 import com.backoffice.desafio.domain.enumerator.StaffRole;
 import com.backoffice.desafio.domain.enumerator.StaffStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +15,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class StaffMember {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID staffId;
 
     private String fullName;
