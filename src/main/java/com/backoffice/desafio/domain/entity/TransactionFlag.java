@@ -23,7 +23,11 @@ public class TransactionFlag {
     private TransactionFlagType flagType;
     private String reason;
     private Instant createdAt;
+
+    @Enumerated(EnumType.STRING)
     private TransactionFlagSeverity severity;
+
+    @Enumerated(EnumType.STRING)
     private TransactionFlagStatus status;
 
     @ManyToOne

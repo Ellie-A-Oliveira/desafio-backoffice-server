@@ -3,6 +3,8 @@ package com.backoffice.desafio.domain.entity;
 import com.backoffice.desafio.domain.enumerator.StaffRole;
 import com.backoffice.desafio.domain.enumerator.StaffStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +23,10 @@ public class StaffMember {
     private String fullName;
     private String email;
 
+    @Enumerated(EnumType.STRING)
     private StaffRole role;
+
+    @Enumerated(EnumType.STRING)
     private StaffStatus status;
 
     @OneToMany
