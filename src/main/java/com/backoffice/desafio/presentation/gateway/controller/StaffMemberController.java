@@ -3,12 +3,16 @@ package com.backoffice.desafio.presentation.gateway.controller;
 import com.backoffice.desafio.application.usecase.CreateStaffMember;
 import com.backoffice.desafio.application.usecase.GetAllStaffMember;
 import com.backoffice.desafio.application.usecase.GetStaffMemberById;
+import com.backoffice.desafio.application.usecase.UpdateStaffMember;
 import com.backoffice.desafio.domain.entity.StaffMember;
+import com.backoffice.desafio.domain.exception.StaffMemberNotFoundException;
 import com.backoffice.desafio.infrastructure.mapper.StaffMemberMapper;
 import com.backoffice.desafio.presentation.gateway.dto.request.CreateStaffMemberRequest;
+import com.backoffice.desafio.presentation.gateway.dto.request.UpdateStaffMemberRequest;
 import com.backoffice.desafio.presentation.gateway.dto.response.GetStaffMemberResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +28,10 @@ public class StaffMemberController {
     private final StaffMemberMapper staffMemberMapper;
 
     // Use cases
-    private final CreateStaffMember createStaffMember;
     private final GetAllStaffMember getAllStaffMember;
     private final GetStaffMemberById getStaffMemberById;
+    private final CreateStaffMember createStaffMember;
+    private final UpdateStaffMember updateStaffMember;
 
     @GetMapping
     public ResponseEntity<List<GetStaffMemberResponse>> getAll() {
@@ -35,16 +40,37 @@ public class StaffMemberController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetStaffMemberResponse> getById(@PathVariable UUID id) {
+    public ResponseEntity<GetStaffMemberResponse> getById(
+            @PathVariable UUID id) {
         Optional<StaffMember> foundStaffMember = getStaffMemberById.execute(id);
+
+        if (foundStaffMember.isEmpty()) return ResponseEntity.notFound().build();
+
         GetStaffMemberResponse response = staffMemberMapper.staffMemberToGetStaffMemberResponse(foundStaffMember.orElse(null));
         return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<UUID> create(@RequestBody @Valid CreateStaffMemberRequest staffMemberRequest) {
+    public ResponseEntity<UUID> create(
+            @RequestBody @Valid CreateStaffMemberRequest staffMemberRequest) {
         StaffMember staffMemberToBeCreated = staffMemberMapper.createStaffMemberRequestToStaffMember(staffMemberRequest);
         StaffMember createdStaffMember = createStaffMember.execute(staffMemberToBeCreated);
         return ResponseEntity.status(201).body(createdStaffMember.getStaffId());
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<UUID> update(
+            @PathVariable UUID id,
+            @RequestBody @Valid UpdateStaffMemberRequest staffMemberRequest)
+            throws BadRequestException {
+        StaffMember staffMemberToBeUpdated = staffMemberMapper.updateStaffMemberRequestToStaffMember(staffMemberRequest);
+
+        try {
+            updateStaffMember.execute(id, staffMemberToBeUpdated);
+        } catch (StaffMemberNotFoundException e) {
+            throw new BadRequestException(e);
+        }
+
+        return ResponseEntity.ok(id);
     }
 }
