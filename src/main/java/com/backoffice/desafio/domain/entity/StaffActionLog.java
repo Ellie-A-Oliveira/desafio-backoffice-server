@@ -1,4 +1,4 @@
-package com.backoffice.desafio.domain;
+package com.backoffice.desafio.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

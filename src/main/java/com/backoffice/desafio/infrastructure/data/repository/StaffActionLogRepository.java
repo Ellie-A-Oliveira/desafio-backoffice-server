@@ -1,7 +1,6 @@
-package com.backoffice.desafio.infrastructure.data;
+package com.backoffice.desafio.infrastructure.data.repository;
 
-import com.backoffice.desafio.domain.Case;
-import com.backoffice.desafio.domain.StaffActionLog;
+import com.backoffice.desafio.domain.entity.StaffActionLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

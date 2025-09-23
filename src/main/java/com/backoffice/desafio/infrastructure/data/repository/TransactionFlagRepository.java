@@ -1,6 +1,6 @@
-package com.backoffice.desafio.infrastructure.data;
+package com.backoffice.desafio.infrastructure.data.repository;
 
-import com.backoffice.desafio.domain.TransactionFlag;
+import com.backoffice.desafio.domain.entity.TransactionFlag;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

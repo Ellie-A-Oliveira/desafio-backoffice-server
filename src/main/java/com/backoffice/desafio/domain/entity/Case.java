@@ -1,4 +1,4 @@
-package com.backoffice.desafio.domain;
+package com.backoffice.desafio.domain.entity;
 
 import com.backoffice.desafio.domain.enumerator.CasePriority;
 import com.backoffice.desafio.domain.enumerator.CaseStatus;
