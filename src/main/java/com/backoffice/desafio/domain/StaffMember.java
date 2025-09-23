@@ -1,7 +1,7 @@
 package com.backoffice.desafio.domain;
 
-import com.backoffice.desafio.domain.enumeration.StaffRole;
-import com.backoffice.desafio.domain.enumeration.StaffStatus;
+import com.backoffice.desafio.domain.enumerator.StaffRole;
+import com.backoffice.desafio.domain.enumerator.StaffStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;

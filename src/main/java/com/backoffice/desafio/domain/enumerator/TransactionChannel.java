@@ -1,4 +1,4 @@
-package com.backoffice.desafio.domain.enumeration;
+package com.backoffice.desafio.domain.enumerator;
 
 public enum TransactionChannel {
     ATM,

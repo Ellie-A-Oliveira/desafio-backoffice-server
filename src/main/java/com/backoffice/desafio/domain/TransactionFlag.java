@@ -1,8 +1,8 @@
 package com.backoffice.desafio.domain;
 
-import com.backoffice.desafio.domain.enumeration.TransactionFlagSeverity;
-import com.backoffice.desafio.domain.enumeration.TransactionFlagStatus;
-import com.backoffice.desafio.domain.enumeration.TransactionFlagType;
+import com.backoffice.desafio.domain.enumerator.TransactionFlagSeverity;
+import com.backoffice.desafio.domain.enumerator.TransactionFlagStatus;
+import com.backoffice.desafio.domain.enumerator.TransactionFlagType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

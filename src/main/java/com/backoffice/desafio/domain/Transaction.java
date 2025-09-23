@@ -1,8 +1,8 @@
 package com.backoffice.desafio.domain;
 
-import com.backoffice.desafio.domain.enumeration.TransactionChannel;
-import com.backoffice.desafio.domain.enumeration.TransactionStatus;
-import com.backoffice.desafio.domain.enumeration.TransactionType;
+import com.backoffice.desafio.domain.enumerator.TransactionChannel;
+import com.backoffice.desafio.domain.enumerator.TransactionStatus;
+import com.backoffice.desafio.domain.enumerator.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

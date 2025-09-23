@@ -1,7 +1,7 @@
 package com.backoffice.desafio.domain;
 
-import com.backoffice.desafio.domain.enumeration.CasePriority;
-import com.backoffice.desafio.domain.enumeration.CaseStatus;
+import com.backoffice.desafio.domain.enumerator.CasePriority;
+import com.backoffice.desafio.domain.enumerator.CaseStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
