@@ -1,39 +1,26 @@
 package com.backoffice.desafio.application.usecase.impl;
 
-import com.backoffice.desafio.application.usecase.UpdateStaffMember;
+import com.backoffice.desafio.application.usecase.DeleteStaffMember;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.exception.StaffMemberNotFoundException;
 import com.backoffice.desafio.infrastructure.data.repository.StaffMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class UpdateStaffMemberImpl implements UpdateStaffMember {
+public class DeleteStaffMemberImpl implements DeleteStaffMember {
     private final StaffMemberRepository staffMemberRepository;
 
     @Override
-    public UUID execute(UUID id, StaffMember staffMemberUpdates) {
+    public UUID execute(UUID id) {
         StaffMember staffMember = staffMemberRepository.findById(id)
                 .orElseThrow(() ->
                         new StaffMemberNotFoundException("Staff member with ID " + id + " not found."));
 
-        if (!staffMemberUpdates.getFullName().isEmpty()) {
-            staffMember.setFullName(staffMemberUpdates.getFullName());
-        }
-
-        if (!staffMemberUpdates.getEmail().isEmpty()) {
-            staffMember.setEmail(staffMemberUpdates.getEmail());
-        }
-
-        if (staffMemberUpdates.getRole() != null) {
-            staffMember.setRole(staffMemberUpdates.getRole());
-        }
-
-        staffMemberRepository.save(staffMember);
+        staffMemberRepository.delete(staffMember);
 
         return id;
     }

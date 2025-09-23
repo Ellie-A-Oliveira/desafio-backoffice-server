@@ -1,9 +1,6 @@
 package com.backoffice.desafio.presentation.gateway.controller;
 
-import com.backoffice.desafio.application.usecase.CreateStaffMember;
-import com.backoffice.desafio.application.usecase.GetAllStaffMember;
-import com.backoffice.desafio.application.usecase.GetStaffMemberById;
-import com.backoffice.desafio.application.usecase.UpdateStaffMember;
+import com.backoffice.desafio.application.usecase.*;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.exception.StaffMemberNotFoundException;
 import com.backoffice.desafio.infrastructure.mapper.StaffMemberMapper;
@@ -32,6 +29,7 @@ public class StaffMemberController {
     private final GetStaffMemberById getStaffMemberById;
     private final CreateStaffMember createStaffMember;
     private final UpdateStaffMember updateStaffMember;
+    private final DeleteStaffMember deleteStaffMember;
 
     @GetMapping
     public ResponseEntity<List<GetStaffMemberResponse>> getAll() {
@@ -72,5 +70,17 @@ public class StaffMemberController {
         }
 
         return ResponseEntity.ok(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(
+            @PathVariable UUID id) {
+        try {
+            deleteStaffMember.execute(id);
+        } catch (StaffMemberNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
     }
 }

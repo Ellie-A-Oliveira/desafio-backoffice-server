@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public interface UpdateStaffMember {
-    UUID execute(UUID id, StaffMember staffMemberUpdates);
+public interface DeleteStaffMember {
+    UUID execute(UUID id);
 }
