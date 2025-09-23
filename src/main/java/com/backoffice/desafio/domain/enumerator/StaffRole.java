@@ -4,5 +4,6 @@ public enum StaffRole {
     COMPLIANCE_OFFICER,
     FRAUD_ANALYST,
     AUDITOR,
-    ADMIN
+    ADMIN,
+    SYSTEM
 }

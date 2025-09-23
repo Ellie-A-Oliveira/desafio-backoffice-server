@@ -1,6 +1,6 @@
 package com.backoffice.desafio.presentation.gateway.controller;
 
-import com.backoffice.desafio.application.usecase.*;
+import com.backoffice.desafio.application.usecase.staffmember.*;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.exception.StaffMemberNotFoundException;
 import com.backoffice.desafio.infrastructure.mapper.StaffMemberMapper;
@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +43,7 @@ public class StaffMemberController {
 
         if (foundStaffMember.isEmpty()) return ResponseEntity.notFound().build();
 
-        GetStaffMemberResponse response = staffMemberMapper.staffMemberToGetStaffMemberResponse(foundStaffMember.orElse(null));
+        GetStaffMemberResponse response = staffMemberMapper.staffMemberToGetStaffMemberResponse(foundStaffMember.get());
         return ResponseEntity.ok(response);
     }
 

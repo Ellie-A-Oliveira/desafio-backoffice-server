@@ -1,6 +1,6 @@
-package com.backoffice.desafio.application.usecase.impl;
+package com.backoffice.desafio.application.usecase.staffmember.impl;
 
-import com.backoffice.desafio.application.usecase.DeleteStaffMember;
+import com.backoffice.desafio.application.usecase.staffmember.DeleteStaffMember;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.exception.StaffMemberNotFoundException;
 import com.backoffice.desafio.infrastructure.data.repository.StaffMemberRepository;
