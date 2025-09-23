@@ -6,12 +6,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class StaffMember {
@@ -32,7 +34,7 @@ public class StaffMember {
     private List<StaffActionLog> staffActionLogs;
 
     @OneToMany
-    private List<Case> cases;
+    private List<Inquiry> inquiries;
 
     @OneToMany
     private List<TransactionFlag> transactionFlags;

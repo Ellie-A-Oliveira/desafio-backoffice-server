@@ -1,6 +1,6 @@
 package com.backoffice.desafio.domain.enumerator;
 
-public enum CasePriority {
+public enum InquiryPriority {
     LOW,
     MEDIUM,
     HIGH

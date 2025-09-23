@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class StaffActionLog {
@@ -24,5 +26,5 @@ public class StaffActionLog {
     private StaffMember performedBy;
 
     @ManyToOne
-    private Case relatedCase;
+    private Inquiry relatedInquiry;
 }

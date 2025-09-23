@@ -1,6 +1,6 @@
 package com.backoffice.desafio.domain.enumerator;
 
-public enum CaseStatus {
+public enum InquiryStatus {
     OPEN,
     IN_PROGRESS,
     CLOSED

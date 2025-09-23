@@ -1,11 +1,12 @@
 package com.backoffice.desafio.domain.entity;
 
-import com.backoffice.desafio.domain.enumerator.CasePriority;
-import com.backoffice.desafio.domain.enumerator.CaseStatus;
+import com.backoffice.desafio.domain.enumerator.InquiryPriority;
+import com.backoffice.desafio.domain.enumerator.InquiryStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.List;
@@ -13,9 +14,10 @@ import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Case {
+public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID caseId;
@@ -27,10 +29,10 @@ public class Case {
     private String resolutionNotes;
 
     @Enumerated(EnumType.STRING)
-    private CasePriority priority;
+    private InquiryPriority priority;
 
     @Enumerated(EnumType.STRING)
-    private CaseStatus status;
+    private InquiryStatus status;
 
     @OneToMany
     private List<Transaction> transactions;

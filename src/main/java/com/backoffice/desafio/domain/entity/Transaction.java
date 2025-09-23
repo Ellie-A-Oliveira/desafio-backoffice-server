@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Transaction {
@@ -42,5 +44,5 @@ public class Transaction {
     private List<TransactionFlag> transactionFlags;
 
     @OneToMany
-    private List<Case> cases;
+    private List<Inquiry> inquiries;
 }
