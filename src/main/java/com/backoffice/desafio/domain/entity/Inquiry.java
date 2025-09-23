@@ -20,9 +20,9 @@ import java.util.UUID;
 public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID caseId;
+    private UUID inquiryId;
 
-    private String caseNumber;
+    private String inquiryNumber;
     private String title;
     private Instant openedAt;
     private Instant closedAt;
