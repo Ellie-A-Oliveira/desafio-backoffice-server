@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RestController("/api/v1/staff-member")
-@Component
+@RestController
+@RequestMapping("/api/v1/staff-member")
 @RequiredArgsConstructor
 public class StaffMemberController {
     private final StaffMemberMapper staffMemberMapper;
