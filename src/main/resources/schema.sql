@@ -10,3 +10,12 @@ CREATE TABLE transaction (
     status VARCHAR(255) NOT NULL,
     channel VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE staff_member (
+    staff_id UUID PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL
+);

@@ -37,3 +37,7 @@ VALUES
 INSERT INTO transaction (transaction_id, account_id, customer_id, amount, currency, timestamp, description, transaction_type, status, channel)
 VALUES
 (UUID(), '5d1cb5be-5374-49ba-a219-e57414be48f9', 'a8b93a9f-cb71-4639-9d85-dba46401c13e', 400.00, 'GBP', CURRENT_TIMESTAMP, 'Branch deposit', 'DEPOSIT', 'COMPLETED', 'BRANCH');
+
+INSERT INTO staff_member (staff_id, full_name, email, password_hash, role, status)
+VALUES
+(UUID(), 'John Doe', 'john.doe@example.com', 'hashedpassword123', 'SYSTEM', 'ACTIVE');
