@@ -1,8 +1,9 @@
 server:
-  port: 80
+  port: 8080
 spring:
-  profiles:
-    active: prod
+  config:
+    active:
+      on-profile: prod
   application:
     name: transactionmonitor
   datasource:
@@ -26,4 +27,4 @@ spring:
 jwt:
   secret: 8c7d6343-c7d4-442b-84de-0ddce17a9baa
   expirationTime: 3600000
-clientorigin: transaction-monitor-client.azurewebsites.net
+clientorigin: https://transaction-monitor-client.azurewebsites.net
