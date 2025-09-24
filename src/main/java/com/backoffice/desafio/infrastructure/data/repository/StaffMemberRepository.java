@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface StaffMemberRepository extends JpaRepository<StaffMember, UUID> {
-    StaffMember findFirstByRole(StaffRole role);
+    StaffMember findByRole(StaffRole role);
     StaffMember findByEmail(String email);
 }

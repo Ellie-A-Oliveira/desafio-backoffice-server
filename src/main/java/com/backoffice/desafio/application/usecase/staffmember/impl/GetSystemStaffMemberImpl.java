@@ -13,6 +13,6 @@ public class GetSystemStaffMemberImpl implements GetSystemStaffMember {
     private final StaffMemberRepository staffMemberRepository;
     @Override
     public StaffMember execute() {
-        return staffMemberRepository.findFirstByRole(StaffRole.SYSTEM);
+        return staffMemberRepository.findByRole(StaffRole.SYSTEM);
     }
 }

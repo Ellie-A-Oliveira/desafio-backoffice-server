@@ -30,19 +30,23 @@ public class JwtTokenUtil {
                 .compact();
     }
 
-    public boolean validateToken(String token, String username) {
+    public boolean validateToken(String token) {
+        if (token == null) return false;
+
         Claims claims = Jwts.parser()
                 .decryptWith(getSecretKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-        boolean isSubValid = claims.getSubject().equals(username);
+        boolean isSubValid = claims.getSubject() != null;
         boolean isExpValid = claims.getExpiration().after(new Date());
 
         return isSubValid && isExpValid;
     }
 
     public String getUsernameFromToken(String token) {
+        if (token == null) return null;
+
         Claims claims = Jwts.parser()
                 .decryptWith(getSecretKey())
                 .build()
