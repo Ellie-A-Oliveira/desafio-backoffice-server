@@ -16,6 +16,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:/schema.sql
+      data-locations: classpath:/data.sql
 jwt:
   secret: 8c7d6343-c7d4-442b-84de-0ddce17a9baa
   expirationTime: 3600000
