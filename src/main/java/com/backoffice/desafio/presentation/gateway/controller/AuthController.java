@@ -1,7 +1,7 @@
 package com.backoffice.desafio.presentation.gateway.controller;
 
 import com.backoffice.desafio.application.usecase.staffmember.CreateStaffMember;
-import com.backoffice.desafio.config.JwtConfig;
+import com.backoffice.desafio.config.JwtConfiguration;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.enumerator.StaffRole;
 import com.backoffice.desafio.infrastructure.jwt.JwtTokenUtil;
@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -29,7 +27,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final CreateStaffMember createStaffMember;
     private JwtTokenUtil jwtTokenUtil;
-    private JwtConfig jwtConfig;
+    private JwtConfiguration jwtConfiguration;
 
     @PostMapping("/register")
     public ResponseEntity<String> registerStub() throws Exception {
@@ -59,7 +57,7 @@ public class AuthController {
         System.out.println(jwt);
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.AUTHORIZATION, jwtConfig.getTokenPrefix() + jwt)
+                .header(HttpHeaders.AUTHORIZATION, jwtConfiguration.getTokenPrefix() + jwt)
                 .body("Login successful.");
     }
 }

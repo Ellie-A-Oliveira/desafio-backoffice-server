@@ -1,31 +1,27 @@
 package com.backoffice.desafio.infrastructure.jwt;
 
-import com.backoffice.desafio.config.JwtConfig;
+import com.backoffice.desafio.config.JwtConfiguration;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
 public class JwtTokenUtil {
-    private final JwtConfig jwtConfig;
+    private final JwtConfiguration jwtConfiguration;
 
     public String generateToken(String username) {
         return Jwts.builder()
                 .claim("sub", username)
                 .claim("iat", Instant.now())
-                .claim("exp", Instant.now().plusMillis(jwtConfig.getExpirationTime()))
+                .claim("exp", Instant.now().plusMillis(jwtConfiguration.getExpirationTime()))
                 .signWith(getSecretKey())
                 .compact();
     }
@@ -57,6 +53,6 @@ public class JwtTokenUtil {
     }
 
     private SecretKey getSecretKey() {
-        return Keys.hmacShaKeyFor(jwtConfig.getSecret().getBytes(StandardCharsets.UTF_8));
+        return Keys.hmacShaKeyFor(jwtConfiguration.getSecret().getBytes(StandardCharsets.UTF_8));
     }
 }

@@ -1,7 +1,7 @@
 package com.backoffice.desafio.infrastructure.jwt;
 
 import com.backoffice.desafio.application.usecase.staffmember.GetStaffMemberByEmail;
-import com.backoffice.desafio.config.JwtConfig;
+import com.backoffice.desafio.config.JwtConfiguration;
 import com.backoffice.desafio.domain.entity.StaffMember;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtTokenUtil jwtTokenUtil;
-    private final JwtConfig jwtConfig;
+    private final JwtConfiguration jwtConfiguration;
     private final GetStaffMemberByEmail getStaffMemberByEmail;
 
     @Override
@@ -51,7 +51,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private String getTokenFromRequest(HttpServletRequest request) {
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        String tokenPrefix = jwtConfig.getTokenPrefix();
+        String tokenPrefix = jwtConfiguration.getTokenPrefix();
 
         if (header != null && header.startsWith(tokenPrefix)) {
             return header.substring(tokenPrefix.length());
