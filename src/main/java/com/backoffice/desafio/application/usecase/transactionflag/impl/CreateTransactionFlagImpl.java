@@ -5,6 +5,8 @@ import com.backoffice.desafio.application.usecase.transactionflag.CreateTransact
 import com.backoffice.desafio.domain.entity.StaffMember;
 import com.backoffice.desafio.domain.entity.Transaction;
 import com.backoffice.desafio.domain.entity.TransactionFlag;
+import com.backoffice.desafio.domain.enumerator.TransactionFlagSeverity;
+import com.backoffice.desafio.domain.enumerator.TransactionFlagStatus;
 import com.backoffice.desafio.domain.enumerator.TransactionFlagType;
 import com.backoffice.desafio.infrastructure.data.repository.TransactionFlagRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,8 @@ public class CreateTransactionFlagImpl implements CreateTransactionFlag {
                 .builder()
                 .transaction(transaction)
                 .flagType(type)
+                .severity(TransactionFlagSeverity.MEDIUM)
+                .status(TransactionFlagStatus.OPEN)
                 .reason(reason)
                 .createdAt(Instant.now())
                 .createdBy(system)

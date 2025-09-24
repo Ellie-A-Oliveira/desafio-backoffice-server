@@ -23,7 +23,7 @@ public class FlagTransactionByIdImpl implements FlagTransactionById {
     public UUID execute(UUID id, TransactionFlagType type, String reason) {
         Transaction transactionToFlag = transactionRepository.findById(id)
                 .orElseThrow(() ->
-                        new TransactionNotFoundException("Staff member with ID " + id + " not found."));
+                        new TransactionNotFoundException("Transaction with ID " + id + " not found."));
 
         TransactionFlag createdTransactionFlag = createTransactionFlag.execute(transactionToFlag, type, reason);
 
