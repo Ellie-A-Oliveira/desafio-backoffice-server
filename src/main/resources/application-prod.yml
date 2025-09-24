@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
 spring:
   profiles:
     active: prod
@@ -26,4 +26,4 @@ spring:
 jwt:
   secret: 8c7d6343-c7d4-442b-84de-0ddce17a9baa
   expirationTime: 3600000
-clientorigin: transaction-monitor-api.azurewebsites.net
+clientorigin: transaction-monitor-client.azurewebsites.net
