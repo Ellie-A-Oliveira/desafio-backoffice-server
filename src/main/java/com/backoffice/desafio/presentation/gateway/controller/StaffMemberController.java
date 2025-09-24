@@ -49,10 +49,14 @@ public class StaffMemberController {
 
     @PostMapping
     public ResponseEntity<UUID> create(
-            @RequestBody @Valid CreateStaffMemberRequest staffMemberRequest) {
+            @RequestBody @Valid CreateStaffMemberRequest staffMemberRequest) throws BadRequestException {
         StaffMember staffMemberToBeCreated = staffMemberMapper.createStaffMemberRequestToStaffMember(staffMemberRequest);
-        StaffMember createdStaffMember = createStaffMember.execute(staffMemberToBeCreated);
-        return ResponseEntity.status(201).body(createdStaffMember.getStaffId());
+        try {
+            StaffMember createdStaffMember = createStaffMember.execute(staffMemberToBeCreated);
+            return ResponseEntity.status(201).body(createdStaffMember.getStaffId());
+        } catch (Exception e) {
+            throw new BadRequestException(e);
+        }
     }
 
     @PatchMapping("/{id}")

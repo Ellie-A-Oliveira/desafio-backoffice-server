@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface StaffMemberRepository extends JpaRepository<StaffMember, UUID> {
     StaffMember findFirstByRole(StaffRole role);
+    StaffMember findByEmail(String email);
 }

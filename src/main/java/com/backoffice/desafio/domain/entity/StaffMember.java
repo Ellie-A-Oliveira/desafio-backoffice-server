@@ -23,6 +23,7 @@ public class StaffMember {
 
     private String fullName;
     private String email;
+    private String passwordHash;
 
     @Enumerated(EnumType.STRING)
     private StaffRole role;
